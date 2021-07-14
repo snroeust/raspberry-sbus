@@ -30,12 +30,12 @@ int main()
 {
     printf("SBUS send to self non-blocking example\n\r");
 
-    sbus.onPacket(onPacket);
+    //sbus.onPacket(onPacket);
 
     sbus_err_t err = sbus.install("/dev/ttyAMA0", false);
     if (err != SBUS_OK)
     {
-        fprintf(stderr, "SBUS install error: %d\n\r", err);
+        printf(stderr, "SBUS install error: %d\n\r", err);
         return err;
     }
 
@@ -45,7 +45,7 @@ int main()
         // desync means a packet was misaligned and not received properly
         if (err == SBUS_ERR_DESYNC)
         {
-            fprintf(stderr, "SBUS desync\n\r");
+            printf(stderr, "SBUS desync\n\r");
         }
 
         static time_t lastWrite = time(nullptr);
@@ -73,10 +73,11 @@ int main()
 
             // make sure to limit sending frequency, SBUS is not that fast
             sbus.write(packet);
+            printf("\t\t Package was written \n\r");
         }
     }
 
-    fprintf(stderr, "SBUS error: %d\n\r", err);
+    printf(stderr, "SBUS error: %d\n\r", err);
 
     return err;
 }
