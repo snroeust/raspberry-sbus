@@ -35,7 +35,7 @@ int main()
     sbus_err_t err = sbus.install("/dev/ttyAMA0", false);
     if (err != SBUS_OK)
     {
-        printf(stderr, "SBUS install error: %d\n\r", err);
+        printf("SBUS install error: %d\n\r", err);
         return err;
     }
 
@@ -45,7 +45,7 @@ int main()
         // desync means a packet was misaligned and not received properly
         if (err == SBUS_ERR_DESYNC)
         {
-            printf(stderr, "SBUS desync\n\r");
+            printf("SBUS desync\n\r");
         }
 
         static time_t lastWrite = time(nullptr);
@@ -77,7 +77,7 @@ int main()
         }
     }
 
-    printf(stderr, "SBUS error: %d\n\r", err);
+    printf("SBUS error: %d\n\r");
 
     return err;
 }
