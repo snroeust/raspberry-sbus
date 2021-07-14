@@ -32,7 +32,7 @@ int main()
 
     //sbus.onPacket(onPacket);
 
-    sbus_err_t err = sbus.install("/dev/ttyAMA0", false);
+    sbus_err_t err = sbus.install("/dev/serial0", false);
     if (err != SBUS_OK)
     {
         printf("SBUS install error: %d\n\r", err);
